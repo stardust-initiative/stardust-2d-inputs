@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+title: "stardust-2d-inputs"
+message: >
+  If you use this software, please cite the Stardust paper that describes
+  the work, and the version-DOI of the Zenodo deposit for the exact input
+  dataset you used.
+type: software
+authors:
+  - given-names: "Dorri"
+    family-names: "Halbertal"
+    affiliation: "Stardust Labs ltd"
+    orcid: "https://orcid.org/0000-0002-1665-0724"
+repository-code: "https://github.com/stardust-initiative/stardust-2d-inputs"
+license: MIT
+references:
+  # TODO: update DOI / preprint URL when the Stardust preprint is published.
+  - type: article
+    title: "Solid-particle stratospheric aerosol injection: a 2-D modeling exploration of the design space"
+    authors:
+      - given-names: "Yoav"
+        family-names: "Lederer"
+      - given-names: "Nahliel"
+        family-names: "Wygoda"
+      - given-names: "Dorri"
+        family-names: "Halbertal"
+      - given-names: "Brian E. J."
+        family-names: "Rose"
+    journal: "Atmospheric Chemistry and Physics"
+    year: 2026
+    notes: "Preprint forthcoming; DOI to be assigned."
+  - type: data
+    title: "Stardust climate-model input database"
+    authors:
+      - given-names: "Dorri"
+        family-names: "Halbertal"
+      - given-names: "Yoav"
+        family-names: "Lederer"
+      - given-names: "Nahliel"
+        family-names: "Wygoda"
+    year: 2026
+    version: "v0.1.0"
+    doi: "10.5281/zenodo.20271742"
+    repository: "https://zenodo.org/record/20271742"
