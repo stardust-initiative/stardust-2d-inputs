@@ -1,0 +1,99 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stardust_2d_inputs"
+version = "0.1.1"
+description = "Input-data engine for the Stardust 2-D atmospheric model: a lean runtime loader + provenance registry, plus offline data generators."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Stardust-Labs", email = "d.halbertal@stardust-initiative.com" },
+]
+keywords = [
+    "atmospheric model",
+    "input data",
+    "provenance",
+    "data registry",
+    "ERA5",
+    "climlab",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+]
+
+# --- Lean core runtime dependencies ---------------------------------------
+# These, and only these, are imported at simulation runtime by `core/`.
+# Anything heavier (cdsapi, zarr, scipy, ...) belongs behind an extra.
+dependencies = [
+    "xarray",
+    "numpy",
+    "netCDF4",
+    "pooch",
+]
+
+[project.optional-dependencies]
+# Private GCS data backend. Pure-Python; kept out of the lean core so a
+# public/local install need not pull cloud client libraries.
+gcs = [
+    "gcsfs",
+]
+# Offline data generators (Phase B2: era5 + tem + optical). Runtime
+# dependencies of the generators only — `core` stays importable without any
+# of these.
+#   cdsapi    : ERA5 download step of the era5 generators (Copernicus CDS).
+#   zarr      : reading the ARCO-ERA5 model-level Zarr store (tem generator).
+#   gcsfs     : GCS access for that public Zarr store (`gs://` paths).
+#   scipy     : interpolation / integration in the tem decomposition
+#               (ndimage.map_coordinates, interpolate, integrate) and in the
+#               optical generators (special functions, optimisation).
+#   miepython : Mie scattering efficiencies for the optical generators.
+#   pandas    : refractive-index CSV I/O in the optical generators.
+# xarray / numpy / netCDF4 are already pulled in by the lean core. cupy is
+# an optional GPU accelerator for the tem generator and is intentionally not
+# listed (the generator falls back to CPU when it is absent).
+generators = [
+    "cdsapi",
+    "zarr",
+    "gcsfs",
+    "scipy",
+    "miepython",
+    "pandas",
+]
+# Development / CI tooling.
+dev = [
+    "pytest",
+    "pre-commit",
+]
+
+[project.urls]
+Homepage = "https://github.com/stardust-initiative/stardust-2d-inputs"
+Repository = "https://github.com/stardust-initiative/stardust-2d-inputs"
+
+[tool.setuptools.packages.find]
+include = ["stardust_2d_inputs*"]
+
+[tool.setuptools.package-data]
+# Ship the registry + release manifests INSIDE the python package so a
+# pip-installed user has them available without a separate clone.
+stardust_2d_inputs = [
+    "py.typed",
+    "data/registry/*.json",
+    "data/releases/*.json",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint.per-file-ignores]
+# The offline generators are migrated research code kept numerically verbatim;
+# E731 (lambda assignments, e.g. the saturation-vapour-pressure helpers) and
+# F841 (unused intermediates) are stylistic here, and rewriting the numeric code
+# to satisfy them would deviate from the verbatim port. Core/loader stay strict.
+"stardust_2d_inputs/generators/**" = ["E731", "F841"]

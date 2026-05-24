@@ -1,0 +1,7 @@
+# CODEOWNERS
+#
+# Replace the placeholder below with the maintainer(s) for this repo.
+# Required for branch-protection rules that use require_code_owner_review.
+#
+# Example: * @stardust-initiative/maintainers
+*

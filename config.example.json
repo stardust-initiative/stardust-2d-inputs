@@ -1,0 +1,27 @@
+{
+  "_comment": "Template engine configuration. Copy to config.json (which is gitignored) and edit. NEVER put credentials or absolute/home paths here: the GCS backend uses ambient IAM credentials, Zenodo is public. The 'local.root' below is a placeholder relative path; point it at your own content-addressed store.",
+
+  "backend": "zenodo",
+
+  "registry_path": "stardust_2d_inputs/data/registry/registry.json",
+  "releases_dir": "stardust_2d_inputs/data/releases",
+  "cache_dir": null,
+  "default_release": "transport-paper-v1",
+
+  "local": {
+    "_comment": "A directory of content-addressed blobs: <root>/<algo-hex>/<filename>. './local-store' is a placeholder relative to the repo root.",
+    "root": "./local-store"
+  },
+
+  "gcs": {
+    "_comment": "Private GCS bucket. Requires the [gcs] extra. Auth via Application Default Credentials or GOOGLE_APPLICATION_CREDENTIALS (a read-only IAM service account).",
+    "bucket": "YOUR_GCS_BUCKET",
+    "prefix": "",
+    "project": null
+  },
+
+  "zenodo": {
+    "_comment": "Public Zenodo deposit. record_id pins one immutable, version-DOI'd record.",
+    "record_id": "20271742"
+  }
+}

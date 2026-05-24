@@ -1,0 +1,25 @@
+Refractive-index references for the silica raw-input data files
+===============================================================
+
+Data files in this directory:
+  n_0-1um.csv, n_1-15um.csv   -- sampled real refractive index n(lambda)
+  k_0-1um.csv, k_1-15um.csv   -- sampled imaginary refractive index k(lambda)
+
+These cover the 0-15 um wavelength range and are used by the
+optical.silica generator to replace the analytic Kitamura oscillator
+model below 8 um.
+
+Source
+------
+Kitamura, R., Pilon, L. & Jonasz, M.
+"Optical constants of silica glass from extreme ultraviolet to far
+infrared at near room temperature."
+Applied Optics 46(33), 8118-8133 (2007).
+doi:10.1364/AO.46.008118
+Open-access copy: https://escholarship.org/content/qt3w1982rh/qt3w1982rh.pdf
+
+Notes
+-----
+The original published oscillator fit was performed against the
+7-15 um data and carries a bias in favour of the real refractive
+index in that range.
