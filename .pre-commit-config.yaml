@@ -1,0 +1,34 @@
+# Pre-commit hooks — local auto-fix; CI is the backstop.
+# Install with:  pre-commit install
+#
+# Hooks: a secret scanner (release-workflow standard §7) and a Python
+# formatter, plus a few hygiene checks.
+
+repos:
+  # --- secret scanning (standard §7) --------------------------------------
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+
+  # --- Python formatting + linting ----------------------------------------
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff          # lint
+        args: [--fix]
+      - id: ruff-format   # format
+
+  # --- general file hygiene -----------------------------------------------
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^stardust_2d_inputs/generators/optical/data/
+      - id: end-of-file-fixer
+        exclude: ^stardust_2d_inputs/generators/optical/data/
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: [--maxkb=512]
+      - id: check-merge-conflict

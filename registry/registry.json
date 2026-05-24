@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "_comment": "Provenance registry. The git history of this file is the database change log (release-workflow standard \u00a75c). Chunk 1 of the input-data-engine migration: the 6 verified SARF-reference inputs the transport paper's loader served, content-addressed and staged in a LocalBackend store. These are the standardized, self-documenting versions (CF attrs, honest variable names, trimmed to used variables) \u2014 data-bit-identical to the originals. Chunk 2 adds the TEM, tropopause and optical-table datasets.",
+  "datasets": {
+    "monthly_zonal_variables": {
+      "description": "Zonal-mean monthly climatology (2008-2017) of ERA5 air temperature and specific humidity on pressure levels; seeds the ERA5 reference state of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:4d857d0433444c0b9471e3c64a8a497c6a6a505b61cdbe0cfb029333f6159da7",
+          "filename": "Monthly_Zonal_Variables_clim_2008_2017.nc",
+          "status": "verified",
+          "size_bytes": 658192,
+          "source": "ERA5 reanalysis monthly means on pressure levels (Copernicus CDS, reanalysis-era5-pressure-levels-monthly-means)",
+          "processing": "zonal mean over longitude; 12-month climatology averaged over 2008-2017",
+          "period": "2008-2017",
+          "generator": "era5.monthly_zonal_variables",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-19"
+        }
+      ]
+    },
+    "monthly_zonal_cloud_cover": {
+      "description": "Zonal-mean monthly climatology (2009-2018) of ERA5 fraction-of-cloud-cover on pressure levels.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:d06ee89e7ff015264becfbb8413cc091b9b81eac3d736ca590cfbbc99f4b1302",
+          "filename": "Monthly_Zonal_Cloud_Cover_clim_2009_2018.nc",
+          "status": "verified",
+          "size_bytes": 2575026,
+          "source": "ERA5 zonal-mean cloud cover, derived from a GRIB-sourced historic monthly dataset",
+          "processing": "zonal mean over longitude; 12-month climatology over 2009-2018",
+          "period": "2009-2018",
+          "generator": "era5.monthly_zonal_cloud_cover",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-19"
+        }
+      ]
+    },
+    "monthly_zonal_cloud_content": {
+      "description": "Zonal-mean monthly climatology (2008-2017) of ERA5 specific cloud ice and liquid water content on pressure levels.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:e6cb2184d29839c98c0d4125603c1fe1705ca5ec30dd688b3efe11ca5d7e692b",
+          "filename": "Monthly_Zonal_Cloud_content_clim_2008_2017.nc",
+          "status": "verified",
+          "size_bytes": 1886927,
+          "source": "ERA5 reanalysis monthly means on pressure levels (Copernicus CDS)",
+          "processing": "zonal mean; 12-month climatology over 2008-2017",
+          "period": "2008-2017",
+          "generator": "era5.monthly_zonal_cloud_content",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-19"
+        }
+      ]
+    },
+    "monthly_zonal_o3": {
+      "description": "Zonal-mean monthly ERA5 ozone mass mixing ratio on pressure levels; the 12 monthly means of the single year 2008.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:6877d2fa1658f551aa0483274b31dcd47cf3e62d240c5f53aad0e1a4cae90639",
+          "filename": "Monthly_Zonal_o3_2008.nc",
+          "status": "verified",
+          "size_bytes": 775337,
+          "source": "ERA5 reanalysis monthly means on pressure levels (Copernicus CDS)",
+          "processing": "zonal mean; the 12 monthly means of the single year 2008 (NOT a multi-year climatology)",
+          "period": "2008",
+          "generator": "era5.monthly_zonal_o3",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-19"
+        }
+      ]
+    },
+    "monthly_zonal_srf_params": {
+      "description": "Zonal-mean monthly ERA5 surface temperature and humidity parameters; full monthly series 2008-2017 (120 months).",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:c912ea2877744dd0f26f0cc17b189853123344943fd18277b16c2c6e50f28224",
+          "filename": "Monthly_Zonal_Srf_Params_2008_2017.nc",
+          "status": "verified",
+          "size_bytes": 2815193,
+          "source": "ERA5 reanalysis monthly means on single levels (Copernicus CDS)",
+          "processing": "zonal mean; full monthly series 2008-2017 (120 months, not a climatology); ts/q2m/qs derived per generate_era5_monthly_zonal_srf_params.py",
+          "period": "2008-2017",
+          "generator": "era5.monthly_zonal_srf_params",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-19"
+        }
+      ]
+    },
+    "monthly_zonal_surface_sw_balance": {
+      "description": "Zonal-mean monthly ERA5 surface downward and net short-wave radiation fluxes (year 2008); used to derive the surface albedo of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:cdbfcd96f123d1caba6be6a5cddb967d058a92988e9871a78b1ff45d4fcc7c66",
+          "filename": "Monthly_Zonal_Surface_SW_balance_2008.nc",
+          "status": "verified",
+          "size_bytes": 84615,
+          "source": "ERA5 reanalysis monthly means on single levels (Copernicus CDS)",
+          "processing": "zonal mean over longitude; 12 monthly means of the single year 2008; surface downward and net SW fluxes (used to derive surface albedo = (down - net) / down)",
+          "period": "2008",
+          "generator": null,
+          "added": "2026-05-19",
+          "notes": "provided ERA5 single-level download; no generator script; surface SW fields only (albedo)"
+        }
+      ]
+    },
+    "eddy_diffusivity": {
+      "description": "Raw (un-postprocessed) ERA5 model-level eddy-diffusivity tensor with std and std/|mean| ratios, plus the Pitari Transformed-Eulerian-Mean (TEM) residual-circulation decomposition of the eddy transport stream function (velocities and stream functions). Monthly fields, 2008-2017.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:5ddc689baa80a9d312da7bb46fb519135b94eb4bbe949712c4c03c4ed7f9311c",
+          "filename": "diffusion_ml_TEMdecomp_raw_2008_2017.nc",
+          "status": "verified",
+          "size_bytes": 154478857,
+          "source": "ERA5 model levels (L137), ARCO-ERA5 GCS Zarr",
+          "processing": "Pitari TEM decomposition of eddy transport stream function; displacement-tracking K-tensor; RAW (no tensor postprocessing); monthly fields concatenated over 2008-2017",
+          "period": "2008-2017",
+          "generator": "transport.diffusion_decomp",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-20",
+          "notes": "raw (un-postprocessed) model-level eddy-diffusivity tensor + TEM residual circulation; no floor replacement, eigenvalue constraint or negative masking; std and std/|mean| ratios included; downstream code chooses any cutoff criteria"
+        }
+      ]
+    },
+    "tropopause": {
+      "description": "ERA5 zonal-mean monthly tropopause pressure (2008-2017), per year and month, on a 1-degree latitude grid; per-latitude max of dynamical and WMO-1st thermal tropopause pressures. Variable: tropopause_pressure.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:2a4764f920a09878b3162bad0b2d30a25bc25ce7b88c5f9802ccf77e46394469",
+          "filename": "tropopause_ERA5_zonal_mean_2008_2017.nc",
+          "status": "verified",
+          "size_bytes": 184570,
+          "source": "Hoffmann & Spang Reanalysis Tropopause Data Repository (DOI 10.26165/JUELICH-DATA/UBNGI2), era5low zonal-mean subset",
+          "processing": "per-latitude max of dynamical and WMO-1st tropopause pressures, by year and month",
+          "period": "2008-2017",
+          "generator": "transport.tropopause",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-20"
+        }
+      ]
+    },
+    "optical_silica": {
+      "description": "RRTMG-banded Mie optical-property table for silica; generated by the optical generator (uniform coszen grid, nr=51).",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:1f9e4913726a76469dc2a76964972cbf609ee2be31233153232c4b315f1bec71",
+          "filename": "stardust_particles_silica_climlab.nc",
+          "status": "verified",
+          "size_bytes": 513893,
+          "source": "Refractive-index input: Kitamura, Pilon & Jonasz, 'Optical constants of silica glass from extreme ultraviolet to far infrared at near room temperature', Applied Optics 46(33), 8118-8133 (2007), doi:10.1364/AO.46.008118. Used as the multi-oscillator Lorentzian model (Table 2 parameters) plus the sampled n/k measurements carried in optical/data/silica/ for wavelengths below 8 um.",
+          "processing": "Stage 1: Kitamura multi-oscillator refractive-index model with Kramers-Kronig-consistent real part, replaced below 8 um by sampled n/k measurements. Stage 2: Mie efficiencies (miepython) Planck-weighted into the RRTMG shortwave/longwave band tables.",
+          "period": "n/a",
+          "generator": "optical.silica",
+          "generator_version": "467f805",
+          "added": "2026-05-20",
+          "notes": "new-code-generated table; the generator reproduces it bit-for-bit (validated); reproduces the published table to float precision at matched scattering angles"
+        }
+      ]
+    },
+    "optical_sulfate": {
+      "description": "RRTMG-banded Mie optical-property table for sulfate (75% H2SO4); generated by the optical generator (uniform coszen grid, nr=51).",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:621f2ef48e1d2b12c803e8292b1719acf7dbd0016e1b3ea8fc6fbeafba76027a",
+          "filename": "stardust_particles_H2SO4_75_climlab.nc",
+          "status": "verified",
+          "size_bytes": 514372,
+          "source": "Refractive-index input: 75% H2SO4 complex index stitched from three published sources. (1) Hummel, Shettle & Longtin, 'A New Background Stratospheric Aerosol Model for Use in Atmospheric Radiation Models', AFGL-TR-88-0166 (1988) -- broadband background table. (2) Ferraro, Charlton-Perez & Highwood, 'Stratospheric dynamics and midlatitude jets under geoengineering with space mirrors and sulfate and titania aerosols', Journal of Geophysical Research: Atmospheres 120(2), 414-429 (2015), doi:10.1002/2014JD022734 -- 75% sulphuric-acid index (SRA data). (3) Gosse, Labrie & Chylek, 'Refractive index of dry and aqueous sulphuric acid: imaginary part of the refractive index of sulfates and nitrates in the 0.7-2.6 um spectral region', Applied Optics 36(16), 3622-3628 (1997) -- absorption (imaginary index) measurements. Raw input files carried in optical/data/sulfate/.",
+          "processing": "Stage 1: broadband background refractive-index table overlaid, where available, by the Ferraro (2015) and Gosse (1997) measurements. Stage 2: Mie efficiencies (miepython) Planck-weighted into the RRTMG shortwave/longwave band tables.",
+          "period": "n/a",
+          "generator": "optical.sulfate",
+          "generator_version": "467f805",
+          "added": "2026-05-20",
+          "notes": "new-code-generated table; the generator reproduces it bit-for-bit (validated); reproduces the published table to float precision at matched scattering angles"
+        }
+      ]
+    },
+    "optical_calcite": {
+      "description": "RRTMG-banded Mie optical-property table for calcite; generated by the optical generator (uniform coszen grid, nr=51).",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:1827ea0380221c48d887177334af3426e17fb48fdc45699b7b3f71123d9421f9",
+          "filename": "stardust_particles_calcite_AvgRay_climlab.nc",
+          "status": "verified",
+          "size_bytes": 513873,
+          "source": "Refractive-index input: Long, Querry, Bell & Alexander, 'Optical properties of calcite and gypsum in crystalline and powdered form in the infrared and far-infrared', Infrared Physics 34(2), 191-201 (1993), doi:10.1016/0020-0891(93)90008-U. Used as the calcite ordinary-ray and extraordinary-ray Lorentz-oscillator parameters (Tables 1 and 2); no raw data files (analytic oscillator model).",
+          "processing": "Stage 1: Lorentz multi-oscillator dielectric model, averaged over the ordinary and extraordinary rays. Stage 2: Mie efficiencies (miepython) Planck-weighted into the RRTMG shortwave/longwave band tables.",
+          "period": "n/a",
+          "generator": "optical.calcite",
+          "generator_version": "467f805",
+          "added": "2026-05-20",
+          "notes": "new-code-generated table; the generator reproduces it bit-for-bit (validated); reproduces the published table to float precision at matched scattering angles"
+        }
+      ]
+    }
+  }
+}

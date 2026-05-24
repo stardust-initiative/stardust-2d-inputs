@@ -1,0 +1,30 @@
+Refractive-index references for the sulfate raw-input data files
+================================================================
+
+The optical.sulfate generator builds the 75% sulphuric-acid (H2SO4)
+complex refractive index by stitching three published sources onto a
+common wavelength grid. Each data file in this directory corresponds to
+one source.
+
+ref3_sulfate_table_h2so4_75percent.csv -- broadband background table
+---------------------------------------------------------------------
+Hummel, J. R., Shettle, E. P. & Longtin, D. R.
+"A New Background Stratospheric Aerosol Model for Use in Atmospheric
+Radiation Models."
+Report AFGL-TR-88-0166, Air Force Geophysics Laboratory (1988).
+
+sulfate_data_s1.txt -- 75% sulphuric-acid index (SRA data)
+----------------------------------------------------------
+Ferraro, A. J., Charlton-Perez, A. J. & Highwood, E. J.
+"Stratospheric dynamics and midlatitude jets under geoengineering with
+space mirrors and sulfate and titania aerosols."
+Journal of Geophysical Research: Atmospheres 120(2), 414-429 (2015).
+doi:10.1002/2014JD022734
+
+sulfate_absorption_ref1.csv -- absorption (imaginary index) measurements
+------------------------------------------------------------------------
+Gosse, S. F., Labrie, M. & Chylek, P.
+"Refractive index of dry and aqueous sulphuric acid: imaginary part of
+the refractive index of sulfates and nitrates in the 0.7-2.6 um
+spectral region."
+Applied Optics 36(16), 3622-3628 (1997).

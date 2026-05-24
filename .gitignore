@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Data-format safety net — do NOT commit unless explicitly tracked
+*.nc
+*.nc4
+*.h5
+*.hdf
+*.hdf5
+*.npz
+*.npy
+*.pkl
+*.pickle
+
+# Credentials / config
+config.json
+*.key
+*.pem
+.env
+.env.*
+!.env.example

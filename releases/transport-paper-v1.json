@@ -1,0 +1,19 @@
+{
+  "release": "transport-paper-v1",
+  "description": "Input set for the transport paper (Lederer et al.). Pins each key to the version that paper's runs were executed against. Single, incrementally-populated release: chunk 1 pins the 6 verified SARF-reference inputs (standardized, self-documenting versions); later chunks add the TEM, tropopause and optical-table keys.",
+  "created": "2026-05-19",
+  "registry_revision": "TBD-registry-commit-or-tag",
+  "pins": {
+    "monthly_zonal_variables": "v1",
+    "monthly_zonal_cloud_cover": "v1",
+    "monthly_zonal_cloud_content": "v1",
+    "monthly_zonal_o3": "v1",
+    "monthly_zonal_srf_params": "v1",
+    "monthly_zonal_surface_sw_balance": "v1",
+    "eddy_diffusivity": "v1",
+    "tropopause": "v1",
+    "optical_silica": "v1",
+    "optical_sulfate": "v1",
+    "optical_calcite": "v1"
+  }
+}
