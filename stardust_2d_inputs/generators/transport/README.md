@@ -72,3 +72,23 @@ from stardust_2d_inputs.generators.transport.tropopause import TropopauseConfig,
 run(TropopauseConfig(data_dir="/path/to/era5low_tab_files",
                      year_start=2008, year_end=2017))
 ```
+
+## Lossless mean-first reduced input
+
+`python -m stardust_2d_inputs.generators.transport.isentropic_subset source.nc reduced.nc`
+selects the four model-pressure components used by mean-first reduced transport:
+`D_yy`, `D_yp_tilt`, `D_pp_tilt`, and `D_pp_theta` (with the
+`iso_mean_first_on_model_` prefix). The physical tensor is assembled by the
+consumer as `Dyy = D_yy`, `Dyp = Dpy = D_yp_tilt`, and
+`Dpp = D_pp_tilt + D_pp_theta`.
+
+All years, months, model pressures, latitudes, floating-point precision and
+missing values are retained. Per-month generator configurations and identities
+are retained where supplied. Only unused variables are removed, and compression
+is lossless. The utility verifies values, coordinates and metadata after writing
+and refuses to overwrite an existing output. The file records parent and
+projection-generator SHA-256 hashes.
+
+This utility uses the core NumPy/xarray/NetCDF dependencies. It does not import
+the optional trajectory-generator dependencies. No climatology, polar extension,
+interpolation or tensor bounds are applied here; those remain model operations.

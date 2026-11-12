@@ -14,6 +14,16 @@ transport-paper model's 2-D stratospheric transport:
 Behind the ``[generators]`` pip extra; not imported at simulation runtime.
 """
 
-from . import diffusion_decomp, tropopause
+from importlib import import_module
 
-__all__ = ["diffusion_decomp", "tropopause"]
+__all__ = ["diffusion_decomp", "tropopause", "isentropic_subset"]
+
+
+def __getattr__(name):
+    # Field selection needs only the core NetCDF dependencies; avoid importing
+    # unrelated trajectory-generator dependencies (and GPU probes) eagerly.
+    if name in __all__:
+        module = import_module(f"{__name__}.{name}")
+        globals()[name] = module
+        return module
+    raise AttributeError(name)

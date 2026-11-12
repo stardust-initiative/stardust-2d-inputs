@@ -203,6 +203,285 @@
           "notes": "new-code-generated table; the generator reproduces it bit-for-bit (validated); reproduces the published table to float precision at matched scattering angles"
         }
       ]
+    },
+    "monthly_zonal_rh": {
+      "description": "Zonal-mean monthly ERA5 relative humidity on pressure levels, per year and month (2008-2017); the SBM-convection reference RH profile of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:a347c6117fba94f1ea15aef7088e78e4fad5fba13f46a53e12f042bf0e76cca1",
+          "filename": "Monthly_Zonal_RH_2008_2017.nc",
+          "status": "probation",
+          "size_bytes": 6430789,
+          "source": "ERA5 reanalysis monthly means on pressure levels (Copernicus CDS)",
+          "processing": "zonal mean over longitude; relative humidity (RH) on 37 pressure levels, per year and month over 2008-2017 (dims: year=10, month=12, level=37, latitude=361)",
+          "period": "2008-2017",
+          "generator": null,
+          "added": "2026-05-20",
+          "notes": "ERA5 zonal-mean RH; generator script not located - provenance/reproducibility to be confirmed.",
+          "public": false
+        }
+      ]
+    },
+    "monthly_zonal_surface_fluxes": {
+      "description": "Zonal-mean monthly ERA5 surface latent (slhf) and sensible (sshf) heat fluxes, full monthly series 2008-2017; used to fit the surface drag coefficient of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:8242a20b9657ad75aff0309d707afdc6e7a1e9c898b43d3924c8425254d0ed37",
+          "filename": "Monthly_Zonal_SURFACE_FLUXES_2008_2017.nc",
+          "status": "verified",
+          "size_bytes": 1548698,
+          "source": "ERA5 reanalysis monthly means on single levels (Copernicus CDS)",
+          "processing": "zonal mean over longitude; surface latent (slhf) and sensible (sshf) heat fluxes, monthly series (dims: valid_time=132, latitude=721)",
+          "period": "2008-2017",
+          "generator": "generate_era5_monthly_zonal_surface_fluxes.py",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-20",
+          "public": false
+        }
+      ]
+    },
+    "monthly_zonal_balance": {
+      "description": "Zonal-mean monthly ERA5 TOA/surface/atmosphere radiation and energy/moisture balance terms (2008-2017 climatology), including ocean-heat-uptake; used for the energy-balance closure of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:22552ed11d40da0f7a81610aef893a21f00ac91a48f7d561f8b550af136ebe09",
+          "filename": "Monthly_Zonal_balance_2008_2017.nc",
+          "status": "probation",
+          "size_bytes": 822670,
+          "source": "ERA5 reanalysis monthly means (Copernicus CDS), derived energy/moisture balance terms",
+          "processing": "zonal mean over longitude; 12-month climatology of radiation fluxes (ssr/str/ssrd/strd/slhf/sshf/tisr/tsr/ttr), transport divergences/tendencies, TOA/surface/atmosphere net radiation, and ocean heat anomaly (oha) (dims: latitude=721, month=12)",
+          "period": "2008-2017",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "notes": "provenance to be confirmed (derived energy/moisture balance; generator script not yet established)"
+        }
+      ]
+    },
+    "monthly_zonal_srf_pres": {
+      "description": "Zonal-mean monthly ERA5 surface pressure, full monthly series 2008-2017.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:7af5259a5528ad6883f216e7cb6845babe9ac08963c412f2f111d46742b86f7d",
+          "filename": "Monthly_Zonal_Srf_Pres_2008_2017.nc",
+          "status": "verified",
+          "size_bytes": 371834,
+          "source": "ERA5 reanalysis monthly means on single levels (Copernicus CDS)",
+          "processing": "zonal mean over longitude; surface pressure (sp), monthly series (dims: valid_time=120, latitude=721)",
+          "period": "2008-2017",
+          "generator": "generate_era5_monthly_zonal_srf_pressure.py",
+          "generator_version": "v0.1.0",
+          "added": "2026-05-20",
+          "public": false
+        }
+      ]
+    },
+    "mean_meridional_moist_diffusion": {
+      "description": "Vertically-averaged meridional moisture diffusivity (Kq) on a 1-degree latitude grid; the meridional moisture diffusivity of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:8bad7d1648c849a01f36a3f5506209b974dd9c2a97b9bb0b2ca5ab144304ced8",
+          "filename": "Mean_meridional_moist_diffusion.nc",
+          "status": "probation",
+          "size_bytes": 10685,
+          "source": "Derived from ERA5; embedded attr: 'Vertically averaged moist diffusion. Created by Mass_Moisture_balance.py on 20/08/2024'",
+          "processing": "vertically-averaged meridional moisture diffusivity (Kq_avg) on a 1-degree latitude grid (dims: latitude=181)",
+          "period": "2008-2017",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "notes": "provenance to be confirmed (embedded attr cites Mass_Moisture_balance.py 2024-08-20, but generator script not yet established in the engine)"
+        }
+      ]
+    },
+    "mse_transport": {
+      "description": "Precomputed transport / diffusion tensor (D_phi_phi, D_phi_p, D_pp) and total residual velocities from the MSE budget, per year and month (2008-2017); the Kyy modification of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:0d81e4537b2cdeb4d1c617c927c578fadae6d2b00690d0043aaf8eef1ba000b9",
+          "filename": "Transport_2008_2017.nc",
+          "status": "probation",
+          "size_bytes": 16088661,
+          "source": "Derived from ERA5 via the MSE-budget transport decomposition",
+          "processing": "precomputed transport / diffusion tensor (D_phi_phi, D_phi_p, D_pp) and total velocities (v_total, w_total) per year and month (dims: year=10, month=12, level=37, latitude=181)",
+          "period": "2008-2017",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "notes": "provenance to be confirmed (MSE-budget transport decomposition; generator script not yet established)"
+        }
+      ]
+    },
+    "mse_q_h": {
+      "description": "ERA5 MSE-budget drivers: zonal-mean moisture, temperature, residual winds, moist static energy, eddy flux products, and tendencies, per year and month (2008-2017); inputs to get_mse_input of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:fcf6fdaec4b3bfa4421eb9c3e398b7134e4bb6df5205a55a91da670410dbacdb",
+          "filename": "era5_q_h_2008_2017.nc",
+          "status": "probation",
+          "size_bytes": 83366638,
+          "source": "Derived from ERA5 reanalysis (Copernicus CDS)",
+          "processing": "zonal-mean moisture (qbar), temperature (Tbar), residual winds (vbar/wbar), moist static energy (hbar), eddy flux products (vqbar/wqbar/vTbar/wTbar/vhbar/whbar) and tendencies (dq_dt/dh_dt), per year and month (dims: year=10, month=12, latitude=361, level=37)",
+          "period": "2008-2017",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "notes": "provenance to be confirmed (MSE/wind drivers for get_mse_input; generator script not yet established)"
+        }
+      ]
+    },
+    "cloud_param_sensitivity_monthly": {
+      "description": "Cloud-feedback sensitivity coefficients (d cloud-fraction / d liquid-water-content / d ice-water-content) on level x latitude, single-realization (monthly) version 2; cloud-feedback polynomial coefficients of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:04a525f7442eb723392b3f0fd14af561c545d28262f418827f6decff03975b7e",
+          "filename": "cloud_param_historic_sensitivity_ver2.nc",
+          "status": "probation",
+          "size_bytes": 1008567,
+          "source": "Derived cloud-parameter historic sensitivity (ver2)",
+          "processing": "cloud fraction / liquid water content / ice water content sensitivities on a level x latitude grid (dims: level=29, latitude=713, key=2)",
+          "period": "historic",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "notes": "provenance to be confirmed (cloud-feedback sensitivity coefficients; generator script not yet established)"
+        }
+      ]
+    },
+    "cloud_param_sensitivity_multiyear": {
+      "description": "Cloud-feedback sensitivity coefficients (cloud-fraction / liquid-water / ice-water) plus min/max envelopes of the driving Delta-fields (cloud fraction, water contents, RH, T) on level x latitude, multi-year version 2; cloud-feedback polynomial coefficients of the transport-paper model.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:9d048bf3d162ae747476f4ae975c649fc5b2ca89a442528f65584039daa4268c",
+          "filename": "cloud_param_historic_sensitivity_ver2_MultiYear.nc",
+          "status": "probation",
+          "size_bytes": 1841720,
+          "source": "Derived cloud-parameter historic sensitivity (ver2, multi-year)",
+          "processing": "cloud fraction / liquid water content / ice water content sensitivities plus min/max Delta-field envelopes (cloud fraction, LWC, IWC, RH, T) on a level x latitude grid (dims: key=2, level=29, latitude=713)",
+          "period": "historic (multi-year)",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "notes": "provenance to be confirmed (multi-year cloud-feedback sensitivity coefficients; generator script not yet established)"
+        }
+      ]
+    },
+    "optical_mars_black": {
+      "description": "RRTMG-banded Mie optical-property table for Mars Black (a non-public material).",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:d854017a4adb6b4bf2e33b73c5f767f098a0478006f13d4a51d888b7d96f6f8d",
+          "filename": "stardust_particles_mars_black_climlab.nc",
+          "status": "verified",
+          "size_bytes": 512308,
+          "source": "Sensitive material; refractive-index provenance withheld",
+          "processing": "Mie efficiencies Planck-weighted into the RRTMG shortwave/longwave band tables (dims include lw_band=16, sw_band=14, coszen=81, mu_samples=51)",
+          "period": "n/a",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "sensitive": true,
+          "notes": "sensitive material; no public generator"
+        }
+      ]
+    },
+    "optical_alpha_sic": {
+      "description": "RRTMG-banded Mie optical-property table for alpha silicon carbide (a non-public material).",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:7a39d72643880c393fc7d4bbec3443178f3287cc860ec68c484646f26968710e",
+          "filename": "stardust_particles_alpha_silicon_carbide_climlab.nc",
+          "status": "verified",
+          "size_bytes": 512116,
+          "source": "Sensitive material; refractive-index provenance withheld",
+          "processing": "Mie efficiencies Planck-weighted into the RRTMG shortwave/longwave band tables (dims include lw_band=16, sw_band=14, coszen=81, mu_samples=51)",
+          "period": "n/a",
+          "generator": null,
+          "added": "2026-05-20",
+          "public": false,
+          "sensitive": true,
+          "notes": "sensitive material; no public generator"
+        }
+      ]
+    },
+    "isentropic_diffusion_2008_2017_monthly": {
+      "description": "ERA5 monthly isentropic diffusion tensors, 2008\u20132017: original v1 and explicitly composite upper-domain v2.",
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:6b47cf8fabd946f80357c54ea7e7ab84a3e35a1cb1f3f73a55b7e0881b73aece",
+          "filename": "era5_iso_diffusion_2008_2017_monthly.nc",
+          "status": "probation",
+          "size_bytes": 1260216723,
+          "period": "2008-2017",
+          "source": "ERA5 ARCO hourly model-level and surface Zarr stores; URLs and sampling settings recorded in research/rev3_isentropic/README.txt.",
+          "processing": "Monthly diffusion tensors; original values copied unchanged into year/month dataset. Consumer selects mean-first reduced components and prepares model-grid climatology.",
+          "generator": "era5_iso_fast",
+          "generator_version": "1.0 (2010-01); 1.1 (other months)",
+          "generator_script_sha256": [
+            "5b69940c216f4acaac28dd1c767c5f529f1e4b4f8e44a0bac8d95c7535c66bfa",
+            "ee2cfada2830c67adf9905f3240d7fd27c4e12009b15a8357835f9a8f17aafe6"
+          ],
+          "added": "2026-11-10",
+          "public": false,
+          "provenance_notes": "ERA5 sources and monthly generation configurations recorded. Supplied 1.1 generator matches 119 monthly identities; January 2010 retains its recorded 1.0 identity. Available January/February monthly arrays match the assembled product."
+        },
+        {
+          "version": "v2",
+          "content_hash": "sha256:b0aa7cf5ed3967f6d85732abe021f198fb534919a06368587d97c5ea9fab58d4",
+          "filename": "era5_iso_diffusion_2008_2017_monthly_patched.nc",
+          "status": "probation",
+          "size_bytes": 1375399479,
+          "period": "2008-2017",
+          "source": "ERA5 ARCO hourly model-level and surface Zarr stores; URLs and sampling settings recorded in research/rev3_isentropic/README.txt.",
+          "processing": "Composite: pressure rows <30 hPa and theta rows 500\u20131000 K replaced by extended-domain calculation; other numeric values verified unchanged.",
+          "generator": "era5_iso_fast",
+          "generator_version": "composite v1 + 1.3-theta3000-graded",
+          "generator_script_sha256": [
+            "66a1a978febe317b05b4593a6bfb001af7a4135bffa29d6809fc9db873beb92f"
+          ],
+          "added": "2026-11-10",
+          "parent_content_hash": "sha256:6b47cf8fabd946f80357c54ea7e7ab84a3e35a1cb1f3f73a55b7e0881b73aece",
+          "public": false,
+          "provenance_notes": "Graded generator SHA-256 matches the embedded metadata. Numerical comparison verifies that changes from parent v1 are confined to declared pressure/theta replacement regions."
+        }
+      ],
+      "public": false
+    },
+    "isentropic_mean_first_reduced_2008_2017_monthly": {
+      "description": "ERA5 monthly mean-first reduced diffusion: four exact fields selected from graded isentropic v2, with original time/spatial grids and metadata.",
+      "public": true,
+      "versions": [
+        {
+          "version": "v1",
+          "content_hash": "sha256:455d998741419fd6edb0d9593a2feb5be5a0643802cab1cdf89c0c5ef10fb16c",
+          "filename": "era5_iso_diffusion_2008_2017_monthly_reduced.nc",
+          "size_bytes": 76986842,
+          "status": "verified",
+          "public": true,
+          "period": "2008-2017",
+          "source": "ERA5 graded isentropic diffusion v2; parent identified by content hash.",
+          "parent_dataset": "isentropic_diffusion_2008_2017_monthly",
+          "parent_version": "v2",
+          "parent_content_hash": "sha256:b0aa7cf5ed3967f6d85732abe021f198fb534919a06368587d97c5ea9fab58d4",
+          "generator": "transport.isentropic_subset",
+          "generator_script_sha256": "21f93a0fabc8be1b0d0d6f7a2dc8d24aa581e6a99fb6a4e849b8cb9f7d37618e",
+          "processing": "Select four mean-first model-pressure components and per-month generation metadata; lossless compression. No thinning, averaging, interpolation, tensor correction or precision reduction.",
+          "validation": "Exact retained values, coordinates and metadata; exact 120-month prepared tensors and 12-month climatological coefficients on production 90x50 and alternative 36x25 grids.",
+          "added": "2026-11-12"
+        }
+      ]
     }
   }
 }

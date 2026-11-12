@@ -20,7 +20,7 @@ Config schema (``config.json``)
       "gcs":    { "bucket": "stardust-2d-inputs",
                   "prefix": "",
                   "project": null },
-      "zenodo": { "record_id": "20271742" }
+      "zenodo": { "record_id": "24163981" }
     }
 
 Only the block for the selected ``backend`` need be populated. Credentials
@@ -148,7 +148,7 @@ def load_config(path: Optional[str] = None) -> Config:
     2. The ``STARDUST_2D_INPUTS_CONFIG`` environment variable.
     3. ``config.json`` in the current working directory.
     4. The built-in default that ships with the package — Zenodo backend,
-       the ``transport-paper-v1`` release, using the registry and releases
+       the ``transport-inputs-v2`` release, using the registry and releases
        JSON files shipped under ``stardust_2d_inputs/data/``. Lets a
        pip-installed user load paper-relevant data without any config.
 
@@ -184,7 +184,7 @@ def load_config(path: Optional[str] = None) -> Config:
 
 
 def _builtin_default_config() -> Config:
-    """Built-in default config: Zenodo backend + ``transport-paper-v1`` release,
+    """Built-in default config: Zenodo backend + ``transport-inputs-v2`` release,
     using the registry and release manifests shipped with the package.
 
     Activates when no explicit config path, env var, or cwd ``config.json``
@@ -198,9 +198,9 @@ def _builtin_default_config() -> Config:
         "backend": "zenodo",
         "registry_path": "registry/registry.json",
         "releases_dir": "releases",
-        "default_release": "transport-paper-v1",
+        "default_release": "transport-inputs-v2",
         "cache_dir": None,
-        "zenodo": {"record_id": "20271742"},
+        "zenodo": {"record_id": "24163981"},
     }
     return Config(raw, repo_root=pkg_data_dir)
 

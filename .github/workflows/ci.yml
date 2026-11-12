@@ -32,7 +32,8 @@ jobs:
 
   test:
     name: tests (py${{ matrix.python-version }})
-    runs-on: ubuntu-latest
+    # Python 3.9 is unavailable on the newer ubuntu-latest image.
+    runs-on: ubuntu-22.04
     timeout-minutes: 20
     strategy:
       fail-fast: false

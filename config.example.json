@@ -6,7 +6,7 @@
   "registry_path": "stardust_2d_inputs/data/registry/registry.json",
   "releases_dir": "stardust_2d_inputs/data/releases",
   "cache_dir": null,
-  "default_release": "transport-paper-v1",
+  "default_release": "transport-inputs-v2",
 
   "local": {
     "_comment": "A directory of content-addressed blobs: <root>/<algo-hex>/<filename>. './local-store' is a placeholder relative to the repo root.",
@@ -22,6 +22,6 @@
 
   "zenodo": {
     "_comment": "Public Zenodo deposit. record_id pins one immutable, version-DOI'd record.",
-    "record_id": "20271742"
+    "record_id": "24163981"
   }
 }
