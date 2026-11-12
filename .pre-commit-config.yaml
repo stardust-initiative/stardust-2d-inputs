@@ -17,16 +17,18 @@ repos:
     hooks:
       - id: ruff          # lint
         args: [--fix]
+        exclude: ^(research/rev3_isentropic/generators/|stardust_2d_inputs/generators/transport/isentropic_sources/)
       - id: ruff-format   # format
+        exclude: ^(research/rev3_isentropic/generators/|stardust_2d_inputs/generators/transport/isentropic_sources/)
 
   # --- general file hygiene -----------------------------------------------
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
       - id: trailing-whitespace
-        exclude: ^stardust_2d_inputs/generators/optical/data/
+        exclude: ^stardust_2d_inputs/generators/(optical/data/|transport/isentropic_sources/)
       - id: end-of-file-fixer
-        exclude: ^stardust_2d_inputs/generators/optical/data/
+        exclude: ^stardust_2d_inputs/generators/(optical/data/|transport/isentropic_sources/)
       - id: check-yaml
       - id: check-json
       - id: check-added-large-files

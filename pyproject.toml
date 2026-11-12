@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "stardust_2d_inputs"
-version = "0.1.1"
+version = "0.2.0"
 description = "Input-data engine for the Stardust 2-D atmospheric model: a lean runtime loader + provenance registry, plus offline data generators."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -59,6 +59,9 @@ gcs = [
 # an optional GPU accelerator for the tem generator and is intentionally not
 # listed (the generator falls back to CPU when it is absent).
 generators = [
+    "numba",
+    "numcodecs",
+    "h5netcdf",
     "cdsapi",
     "zarr",
     "gcsfs",
@@ -86,6 +89,7 @@ stardust_2d_inputs = [
     "py.typed",
     "data/registry/*.json",
     "data/releases/*.json",
+    "generators/transport/isentropic_sources/README.txt",
 ]
 
 [tool.pytest.ini_options]

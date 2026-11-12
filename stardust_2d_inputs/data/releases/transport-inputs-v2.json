@@ -1,0 +1,19 @@
+{
+  "release": "transport-inputs-v2",
+  "description": "Atmospheric reference, optical, and transport inputs including isentropic-derived transport diffusivity.",
+  "created": "2026-11-12",
+  "pins": {
+    "monthly_zonal_variables": "v1",
+    "monthly_zonal_cloud_cover": "v1",
+    "monthly_zonal_cloud_content": "v1",
+    "monthly_zonal_o3": "v1",
+    "monthly_zonal_srf_params": "v1",
+    "monthly_zonal_surface_sw_balance": "v1",
+    "eddy_diffusivity": "v1",
+    "tropopause": "v1",
+    "optical_silica": "v1",
+    "optical_sulfate": "v1",
+    "optical_calcite": "v1",
+    "isentropic_mean_first_reduced_2008_2017_monthly": "v1"
+  }
+}
