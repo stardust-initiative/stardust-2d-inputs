@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "stardust_2d_inputs"
-version = "0.2.0"
+version = "0.2.1"
 description = "Input-data engine for the Stardust 2-D atmospheric model: a lean runtime loader + provenance registry, plus offline data generators."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -90,6 +90,11 @@ stardust_2d_inputs = [
     "data/registry/*.json",
     "data/releases/*.json",
     "generators/transport/isentropic_sources/README.txt",
+    "generators/optical/data/silica/*.csv",
+    "generators/optical/data/silica/*.txt",
+    "generators/optical/data/sulfate/*.csv",
+    "generators/optical/data/sulfate/*.txt",
+    "generators/optical/*.md",
 ]
 
 [tool.pytest.ini_options]

@@ -1,0 +1,19 @@
+{
+  "release": "transport-inputs-v3",
+  "description": "Atmospheric and transport inputs with refined hemispheric optical quadrature and extended silica/calcite radius coverage.",
+  "created": "2026-11-17",
+  "pins": {
+    "monthly_zonal_variables": "v1",
+    "monthly_zonal_cloud_cover": "v1",
+    "monthly_zonal_cloud_content": "v1",
+    "monthly_zonal_o3": "v1",
+    "monthly_zonal_srf_params": "v1",
+    "monthly_zonal_surface_sw_balance": "v1",
+    "eddy_diffusivity": "v1",
+    "tropopause": "v1",
+    "optical_silica": "v2",
+    "optical_sulfate": "v1",
+    "optical_calcite": "v2",
+    "isentropic_mean_first_reduced_2008_2017_monthly": "v1"
+  }
+}

@@ -53,3 +53,26 @@ jobs:
 
       - name: Run the test suite
         run: pytest -v
+
+  optical:
+    name: optical quadrature validation
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install optical test dependencies
+        run: pip install -e '.[dev]' scipy pandas miepython
+      - name: Test angular integrals and radius coverage
+        run: pytest -v tests/test_optical_refinement.py
+      - name: Validate installed optical source data
+        run: |
+          pip wheel --no-deps . -w /tmp/input-wheels
+          pip install --no-deps --target /tmp/input-install /tmp/input-wheels/*.whl
+          cd /tmp
+          PYTHONPATH=/tmp/input-install python -c 'from pathlib import Path; import stardust_2d_inputs as p; from stardust_2d_inputs.generators.optical import silica, _common; assert str(Path(p.__file__)).startswith("/tmp/input-install/"); silica._refractive_index(_common.OpticalConfig())'
