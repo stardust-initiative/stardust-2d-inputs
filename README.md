@@ -15,7 +15,7 @@ and `Materials_optical_tables` repositories.
 
 > **Status — `v0.x`, in development.** The runtime `core/` and the `era5` /
 > `transport` / `optical` generators are implemented. The registry carries the
-> transport-paper input set: the `transport-inputs-v2` release pins the 12
+> transport-paper input set: the `transport-inputs-v3` release pins the 12
 > public datasets; `private-superset` pins the full private set. Data stores:
 > the public Zenodo deposit is available.
 
@@ -71,34 +71,13 @@ directory. Choose the backend in that config by use case:
 | backend | use | release |
 |---|---|---|
 | `gcs` | internal / full-physics runs — the complete private superset | `private-superset` |
-| `zenodo` | public reproduction — the published subset only | `transport-inputs-v2` |
+| `zenodo` | public reproduction — the published subset only | `transport-inputs-v3` |
 | `local` | offline development against a local content-addressed store | either |
 
-(The committed `config.example.json` defaults to `zenodo` + `transport-inputs-v2`,
+(The committed `config.example.json` defaults to `zenodo` + `transport-inputs-v3`,
 the private-repo runtime default.)
 
-<!-- internal-only:start (the publish step strips through internal-only:end) -->
-#### Setup — internal user (Stardust team, private GCS)
 
-```bash
-# 1. install the core + the gcs backend  (add '.[generators]' only to regenerate data)
-pip install -e '.[gcs]'
-
-# 2. authenticate to GCP with read access to gs://YOUR_GCS_BUCKET
-gcloud auth application-default login
-#    (or point GOOGLE_APPLICATION_CREDENTIALS at a read-only service-account key)
-
-# 3. create the config — the template already defaults to zenodo + transport-inputs-v2
-cp config.example.json config.json
-
-# 4. tell consuming runs where the config is
-export STARDUST_2D_INPUTS_CONFIG="$PWD/config.json"
-
-# 5. verify (fetches from GCS, hash-verified)
-python -c "from stardust_2d_inputs.core.loader import load; print(load('monthly_zonal_o3').sizes)"
-```
-
-<!-- internal-only:end -->
 #### Setup — external user (public, Zenodo)
 
 No credentials and no GCS/generator extras — Zenodo is public.
@@ -114,8 +93,8 @@ cat > config.json <<'JSON'
   "backend": "zenodo",
   "registry_path": "registry/registry.json",
   "releases_dir": "releases",
-  "default_release": "transport-inputs-v2",
-  "zenodo": { "record_id": "<published record id>" }
+  "default_release": "transport-inputs-v3",
+  "zenodo": { "record_id": "24318521" }
 }
 JSON
 
@@ -123,7 +102,7 @@ JSON
 export STARDUST_2D_INPUTS_CONFIG="$PWD/config.json"
 
 # 4. verify (fetches over public HTTPS, hash-verified)
-python -c "from stardust_2d_inputs.core.loader import load; print(load('monthly_zonal_o3', release='transport-inputs-v2').sizes)"
+python -c "from stardust_2d_inputs.core.loader import load; print(load('monthly_zonal_o3', release='transport-inputs-v3').sizes)"
 ```
 
 ### Load a dataset
@@ -135,10 +114,10 @@ from stardust_2d_inputs import load
 ds = load("Monthly_Zonal_Variables")
 
 # pin a release manifest — the input set a given paper was run against
-ds = load("Monthly_Zonal_Variables", release="transport-inputs-v2")
+ds = load("Monthly_Zonal_Variables", release="transport-inputs-v3")
 
 # cherry-pick one key to an explicit older version (bug bisection)
-ds = load("Monthly_Zonal_o3", release="transport-inputs-v2", version="v1")
+ds = load("Monthly_Zonal_o3", release="transport-inputs-v3", version="v1")
 ```
 
 `load` returns an `xarray.Dataset`. The resolution rule is, in order of
@@ -215,3 +194,9 @@ carry CC-BY-4.0.
 - Repository / code — Dorri Halbertal, <d.halbertal@stardust-initiative.com>
 
 See [SECURITY.md](SECURITY.md) for the private-disclosure channel.
+
+### Refined optical tables
+
+See [the optical refinement workflow](stardust_2d_inputs/generators/optical/REFINED_TABLES.md) for converged hemispheric quadrature and extended radius coverage. Existing release manifests retain their original table versions.
+
+Input dataset v0.3.0: [10.5281/zenodo.24318521](https://doi.org/10.5281/zenodo.24318521). This release configuration becomes usable once the reserved dataset version is published.
